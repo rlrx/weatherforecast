@@ -5,5 +5,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 	</head>
-	<body></body>
+	<body>
+		<h1>Weather App</h1>
+		<div id="app">
+			<div class="weatherTodayPage">
+				<div class="searchSection">
+					<input
+						type="text"
+						id="location-input"
+						placeholder="Enter city name"
+					/>
+					<button id="search-btn">Search</button>
+				</div>
+				<div class="currentLocation"></div>
+				<div class="todayIconSection">
+					<img
+						src="./assets/pngwing.com.png"
+						alt="weather condition"
+						width="100"
+						height="auto"
+					/>
+				</div>
+				<div class="weatherTodaySection"></div>
+			</div>
+			<div class="weatherForecastPage"></div>
+		</div>
+		<div id="bottomDiv"></div>
+	</body>
 </html>
