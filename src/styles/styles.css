@@ -16,3 +16,15 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+
+.weatherForecastPage {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 50px;
+}
+
+.forecastDay {
+	display: flex;
+	flex-direction: column;
+}

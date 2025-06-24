@@ -8,6 +8,9 @@ class DomController {
 		this.weatherTodaySection = document.querySelector(
 			".weatherTodaySection"
 		);
+		this.weatherForecastSection = document.querySelector(
+			".weatherForecastPage"
+		);
 		this.searchBtn.addEventListener("click", () => this.handleSearch());
 		this.locationInput.addEventListener("keypress", (e) => {
 			if (e.key === "Enter") this.handleSearch();
@@ -23,7 +26,10 @@ class DomController {
 			console.log(weatherData);
 			const processedData =
 				WeatherService.processWeatherData(weatherData);
+			const processedForecastData =
+				WeatherService.processForecastWeatherData(weatherData);
 			this.displayWeather(processedData);
+			this.displayForecastWeather(processedForecastData);
 		} catch (error) {
 			this.displayError(error.message);
 		}
@@ -38,6 +44,22 @@ class DomController {
 			<h5>${data.feelsLike}</h5>
 			<h5>${data.tempMax}${data.tempMin}</h5>
         `;
+	}
+
+	// forecastInfo is array of objects where each object is forecasted day info
+	displayForecastWeather(forecastInfo) {
+		// use a for loop to go through all objects in forecastInfo array
+		// use DOM manipulation create a child div
+		// set the innerHTML of the child div like in displayWeather
+		for (let i = 0; i < 7; i++) {
+			const forecastDay = document.createElement("div");
+			forecastDay.classList.add("forecastDay");
+			forecastDay.innerHTML = `
+			<h5>${forecastInfo[i].day}</h5>
+			<h5>${forecastInfo[i].icon}</h5>
+			<h5>${forecastInfo[i].tempMax}${forecastInfo[i].tempMin}</h5>`;
+			this.weatherForecastSection.appendChild(forecastDay);
+		}
 	}
 
 	displayError(message) {
